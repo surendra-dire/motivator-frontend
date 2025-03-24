@@ -1,4 +1,4 @@
-version: "3.8"
+#version: "3.8"
 
 services:
   mongo-db:
@@ -18,7 +18,7 @@ services:
     volumes:
       - mongo-data:/data/db
     healthcheck:
-      test: [ "CMD", "mongo", "--eval", "db.runCommand('ping')" ]
+      test: ["CMD", "mongo", "--eval", "db.runCommand('ping')"]
       interval: 30s
       retries: 5
 
@@ -50,8 +50,9 @@ services:
     networks:
       - app-network
 
-networks:
-  app-network:
-
 volumes:
   mongo-data:
+
+networks:
+  app-network:
+    driver: bridge
